@@ -1,0 +1,19 @@
+<!-- <ul *ngFor = "let todo of todos"> 
+    <li>{{todo.sno}} - {{todo.title}} - {{todo.desc}} - {{todo.active}}</li>
+
+</ul> -->
+<div class="container my-4">
+  <!--container class of bootstrap which provide some padding and space from edges.-->
+  <h1 class="text-center mb-3">Todo List By Ayush</h1>
+<app-addtodo (todoAdd)="addTodo($event)"></app-addtodo>
+<h3>Your Todos</h3>
+<div *ngIf="this.todos.length === 0; else elseBlock">No todos to Display!</div>
+<ng-template #elseBlock>
+  <div *ngFor="let todo of todos">
+    <app-todos-item
+      [todo]="todo"
+      (todoDelete)="deleteTodo($event)"
+    ></app-todos-item>
+  </div>
+</ng-template>
+</div>
